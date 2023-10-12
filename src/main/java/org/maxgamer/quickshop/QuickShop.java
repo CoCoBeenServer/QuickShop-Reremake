@@ -703,7 +703,8 @@ public class QuickShop extends JavaPlugin implements QuickShopAPI {
         getLogger().info("QuickShop " + getFork() + " - Early boot step - Booting up");
         //BEWARE THESE ONLY RUN ONCE
         this.buildInfo = new BuildInfo(getResource("BUILDINFO"));
-        runtimeCheck(EnvCheckEntry.Stage.ON_LOAD);
+        //Disable runtimeCheck
+        //runtimeCheck(EnvCheckEntry.Stage.ON_LOAD);
         getLogger().info("Reading the configuration...");
         this.initConfiguration();
         this.bootError = null;
@@ -958,7 +959,8 @@ public class QuickShop extends JavaPlugin implements QuickShopAPI {
 
         /* Check the running envs is support or not. */
         getLogger().info("Starting plugin self-test, please wait...");
-        runtimeCheck(EnvCheckEntry.Stage.ON_ENABLE);
+        //Disable runtimeCheck
+        //runtimeCheck(EnvCheckEntry.Stage.ON_ENABLE);
 
         getLogger().info("Reading the configuration...");
         this.initConfiguration();

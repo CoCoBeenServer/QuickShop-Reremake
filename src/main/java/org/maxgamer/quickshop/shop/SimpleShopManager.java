@@ -761,13 +761,8 @@ public class SimpleShopManager implements ShopManager, Reloadable {
                 .currency(shop.getCurrency())
                 .world(shop.getLocation().getWorld())
                 .to(buyer);
-        if (!shop.isUnlimited()
-                || (plugin.getConfig().getBoolean("shop.pay-unlimited-shop-owners")
-                && shop.isUnlimited())) {
-            transaction = builder.from(shop.getOwner()).build();
-        } else {
-            transaction = builder.from(null).build();
-        }
+        //Disable money transaction
+        transaction = builder.from(null).build();
         if (!transaction.failSafeCommit()) {
             if (transaction.getSteps() == EconomyTransaction.TransactionSteps.CHECK) {
                 plugin.text().of(buyer, "the-owner-cant-afford-to-buy-from-you",
@@ -1124,13 +1119,8 @@ public class SimpleShopManager implements ShopManager, Reloadable {
                 .taxAccount(taxAccount)
                 .world(shop.getLocation().getWorld())
                 .currency(shop.getCurrency());
-        if (!shop.isUnlimited()
-                || (plugin.getConfig().getBoolean("shop.pay-unlimited-shop-owners")
-                && shop.isUnlimited())) {
-            transaction = builder.to(shop.getOwner()).build();
-        } else {
-            transaction = builder.to(null).build();
-        }
+        //Disable money transaction
+        transaction = builder.to(null).build();
         if (!transaction.failSafeCommit()) {
             if (transaction.getSteps() == EconomyTransaction.TransactionSteps.CHECK) {
                 plugin.text().of(seller, "you-cant-afford-to-buy",
